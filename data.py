@@ -2,14 +2,15 @@
 t2='https://gate-grey-go.t2.moego.pet/api/'
 ct2='https://gate-grey-client.t2.moego.pet/'
 s1='https://go.s1.moego.pet/api/'
+cs1='https://client.s1.moego.pet/'
 prod='https://go.moego.pet/api/'
 
 
 # test account info
-host=t2
-clientHost=ct2
-email='yangxiao@mymengshi.com'
-pwd='12345678'
+host=s1
+clientHost=cs1
+email='test-api115157@moego.pet'
+pwd='123456'
 # lastBizId=100741 # optional
 
 #smart list 筛选条件

@@ -104,6 +104,11 @@ class Test_payOnline_debitCard():
         respB=grooming_invoice_order_detail(header,invoiceId).json()
         assert respB["paymentSummary"]["payments"][0]["cardFunding"] == 'debit'
         assert respB["paymentSummary"]["payments"][0]["isOnline"]
+        assert resp["status"] == "completed"
+
+        # 判断appt是否自动finished
+        pup = grooming_appointment_detail_pup(header, get_global_data("groomingId")).json()
+        assert pup["data"]["status"] == 3  # finished
         # assert resp["convenienceFee"] == processingFee
         #
         #

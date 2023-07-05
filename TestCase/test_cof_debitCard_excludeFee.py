@@ -90,6 +90,11 @@ class Test_cof_debitCard_excludeFee():
 
         assert resp["paidAmount"] == paymentAmount-processingFee
         # assert resp["convenienceFee"] == processingFee
+        assert resp["status"] == "completed"
+
+        # 判断appt是否自动finished
+        pup = grooming_appointment_detail_pup(header, get_global_data("groomingId")).json()
+        assert pup["data"]["status"] == 3  # finished
 
         # 取本次payment的paymentId、applicationFee
         clientPayments = payment_payment_list(header, customerId).json()

@@ -102,6 +102,11 @@ class Test_payOnline_creditCard():
 
         assert resp["paidAmount"] == paymentAmount
         assert resp["convenienceFee"] == processingFee
+        assert resp["status"] == "completed"
+
+        # 判断appt是否自动finished
+        pup = grooming_appointment_detail_pup(header, get_global_data("groomingId")).json()
+        assert pup["data"]["status"] == 3  # finished
         #
         #
         # 取本次payment的paymentId、applicationFee

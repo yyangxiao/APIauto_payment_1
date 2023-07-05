@@ -89,6 +89,12 @@ class Test_noShow_creditCard():
         assert resp["paidAmount"] == paymentAmount
         assert resp["convenienceFee"] == processingFee
 
+        # 判断appt是否为cancelled
+        pup = grooming_appointment_detail_pup(header, get_global_data("groomingId")).json()
+        assert pup["data"]["status"] == 4    #appt cancelled
+        assert pup["data"]["noShow"] == 1  # appt marked as no-show
+        assert pup["data"]["noShowFee"] == noShowAmount
+
 
         # 取本次payment的paymentId、applicationFee
         clientPayments=payment_payment_list(header,customerId).json()

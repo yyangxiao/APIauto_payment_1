@@ -91,6 +91,10 @@ class Test_cof_creditCard():
         assert resp["paidAmount"] == paymentAmount
         assert resp["convenienceFee"] == processingFee
 
+        # 判断appt是否自动finished
+        pup = grooming_appointment_detail_pup(header, get_global_data("groomingId")).json()
+        assert pup["data"]["status"] == 3    #finished
+
         # 取本次payment的paymentId、applicationFee
         clientPayments = payment_payment_list(header, customerId).json()
         applicationFee = clientPayments["data"]["paymentList"][0]["processingFee"]

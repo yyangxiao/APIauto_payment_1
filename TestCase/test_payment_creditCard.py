@@ -69,9 +69,14 @@ class Test_payment_creditCard():
                 break
             elif i == 5 and resp["status"] == 'processing':
                 print(i, invoiceId, "Something wrong!")
-
+        # 判断invoice返回paid amount以及invoice状态
         assert resp["paidAmount"] == paymentAmount
         assert resp["convenienceFee"] == processingFee
+        assert resp["status"] == "completed"
+
+        # 判断appt是否自动finished
+        pup = grooming_appointment_detail_pup(header, get_global_data("groomingId")).json()
+        assert pup["data"]["status"] == 3    #finished
 
 
         # 取本次payment的paymentId、applicationFee

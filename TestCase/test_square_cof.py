@@ -65,5 +65,9 @@ class Test_square_cof():
         resp = grooming_invoice_order_detail(header, invoiceId).json()
         assert resp["paidAmount"] == amount
 
+        # 判断appt是否自动finished
+        pup = grooming_appointment_detail_pup(header, get_global_data("groomingId")).json()
+        assert pup["data"]["status"] == 3  # finished
+
 if __name__=="__main__":
     pytest.main()
