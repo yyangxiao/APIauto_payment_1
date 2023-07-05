@@ -24,6 +24,7 @@ class Test_cof_creditCard():
         print("add card:", cardId)
 
         groomingId = create_appt(header)
+        set_global_data("groomingId", groomingId)
         pup = grooming_appointment_detail_pup(header, groomingId).json()
         invoiceId = pup["data"]["invoiceId"]
         set_global_data("invoiceId", invoiceId)
@@ -93,6 +94,7 @@ class Test_cof_creditCard():
 
         # 判断appt是否自动finished
         pup = grooming_appointment_detail_pup(header, get_global_data("groomingId")).json()
+        print(pup)
         assert pup["data"]["status"] == 3    #finished
 
         # 取本次payment的paymentId、applicationFee

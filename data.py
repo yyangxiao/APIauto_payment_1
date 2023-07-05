@@ -7,10 +7,10 @@ prod='https://go.moego.pet/api/'
 
 
 # test account info
-host=s1
-clientHost=cs1
-email='test-api115157@moego.pet'
-pwd='123456'
+host=t2
+clientHost=ct2
+email='yangxiao@mymengshi.com'
+pwd='12345678'
 # lastBizId=100741 # optional
 
 #smart list 筛选条件

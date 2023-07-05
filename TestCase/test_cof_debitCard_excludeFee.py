@@ -24,6 +24,7 @@ class Test_cof_debitCard_excludeFee():
         print("add card:", cardId)
 
         groomingId = create_appt(header)
+        set_global_data("groomingId", groomingId)
         pup = grooming_appointment_detail_pup(header, groomingId).json()
         invoiceId = pup["data"]["invoiceId"]
         set_global_data("invoiceId", invoiceId)
